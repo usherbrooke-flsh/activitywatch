@@ -113,6 +113,45 @@ For instructions on how to get started, please see [our guide in the documentati
 
 Interested in building from source? [There's a guide for that too](https://docs.activitywatch.net/en/latest/installing-from-source.html).
 
+### How to build from source
+
+**Requirements and code modification**
+- Python 3.9
+- [Openssl unsafelegacyrenegociation](https://stackoverflow.com/questions/71603314/ssl-error-unsafe-legacy-renegotiation-disabled)
+- [aw-server-rust/aw-webui/vue.config.js](aw-server-rust/aw-webui/vue.config.js)
+- [aw-server/aw-webui/vue.config.js](aw-server/aw-webui/vue.config.js)
+```javascript
+const crypto = require("crypto");
+const crypto_orig_createHash = crypto.createHash;
+crypto.createHash = algorithm => crypto_orig_createHash(algorithm == "md4" ? "sha256" : algorithm);
+```
+[Source](https://weekendprojects.dev/posts/fixed-node-err_ossl_evp_unsupported/)
+
+or use `export NODE_OPTIONS=--openssl-legacy-provider` when calling `vue serve` and `vue build`
+
+#### Build
+
+```bash
+git clone --recursive git@github.com:usherbrooke-flsh/activitywatch.git
+cd activitywatch
+python3.9 -m venv venv
+source ./venv/bin/activate
+
+cd ./aw-server-rust/
+cargo update
+cd ./aw-models/
+cargo update
+cd ../../
+
+cd aw-server/aw-webui/
+npx browserslist@latest --update-db
+
+cd ../../aw-server-rust/aw-webui
+npx browserslist@latest --update-db
+
+make build
+```
+
 ## Is this yet another time tracker?
 
 Yes, but we found that most time trackers lack in one or more important features.

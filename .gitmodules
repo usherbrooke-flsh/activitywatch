@@ -6,7 +6,8 @@
 	url = https://github.com/ActivityWatch/aw-client.git
 [submodule "aw-server"]
 	path = aw-server
-	url = https://github.com/doubledashio/aw-server.git
+	#url = https://github.com/doubledashio/aw-server.git
+	url = https://github.com/usherbrooke-flsh/aw-server
 [submodule "aw-watcher-afk"]
 	path = aw-watcher-afk
 	url = https://github.com/ActivityWatch/aw-watcher-afk.git
@@ -18,4 +19,5 @@
 	url = https://github.com/ActivityWatch/aw-watcher-window.git
 [submodule "aw-server-rust"]
 	path = aw-server-rust
-	url = https://github.com/doubledashio/aw-server-rust.git
+	#url = https://github.com/doubledashio/aw-server-rust.git
+	url = https://github.com/usherbrooke-flsh/aw-server-rust
