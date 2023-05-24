@@ -68,18 +68,14 @@
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2FActivityWatch%2Factivitywatch.svg?type=shield)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2FActivityWatch%2Factivitywatch?ref=badge_shield)
 -->
 
-
-*Do you want to receive email updates on major announcements?*<br>
-***[Signup for the newsletter](http://eepurl.com/cTU6QX)!***
-
 <details>
  <summary>Table of Contents</summary>
 
  * [About](#about)
-    * [Screenshots](#screenshots)
-    * [Is this yet another time tracker?](#is-this-yet-another-time-tracker)
-       * [Feature comparison](#feature-comparison)
     * [Installation &amp; Usage](#installation--usage)
+      * [How to build from source](#how-to-build-from-sources)
+    * [Is this yet another time tracker?](#is-this-yet-another-time-tracker)
+      * [Feature comparison](#feature-comparison)
  * [About this repository](#about-this-repository)
     * [Server](#server)
     * [Watchers](#watchers)
@@ -99,21 +95,13 @@ We've worked towards this goal by creating a application for safe storage of the
 
 It is up to you as user to collect as much as you want, or as little as you want (and we hope some of you will help write watchers so we can collect more).
 
-### Screenshots
-
-<span><img src="https://activitywatch.net/img/screenshot-v0.9.3-activity.png"   width="100%"></span>
-<span><img src="https://activitywatch.net/img/screenshot-v0.8.0b9-timeline.png" width="100%"></span>
-
-
 ## Installation & Usage
 
-Downloads are available on our [releases page](https://github.com/ActivityWatch/activitywatch/releases).
+Downloads are available on our [releases page](https://github.com/usherbrooke-flsh/activitywatch).
 
 For instructions on how to get started, please see [our guide in the documentation](https://docs.activitywatch.net/en/latest/getting-started.html).
 
-Interested in building from source? [There's a guide for that too](https://docs.activitywatch.net/en/latest/installing-from-source.html).
-
-### How to build from source
+### How to build from sources
 
 **Requirements and code modification**
 - Python 3.9
@@ -125,7 +113,7 @@ const crypto = require("crypto");
 const crypto_orig_createHash = crypto.createHash;
 crypto.createHash = algorithm => crypto_orig_createHash(algorithm == "md4" ? "sha256" : algorithm);
 ```
-[Source](https://weekendprojects.dev/posts/fixed-node-err_ossl_evp_unsupported/)
+[Source of this example](https://weekendprojects.dev/posts/fixed-node-err_ossl_evp_unsupported/)
 
 or use `export NODE_OPTIONS=--openssl-legacy-provider` when calling `vue serve` and `vue build`
 
@@ -150,6 +138,12 @@ cd ../../aw-server-rust/aw-webui
 npx browserslist@latest --update-db
 
 make build
+```
+
+#### Update sub repositories
+
+```bash
+git submodule update --init --recursive
 ```
 
 ## Is this yet another time tracker?
